@@ -1,27 +1,44 @@
+<style>
+	.uneaten{
+		position:relative;
+		float:left;
+		margin-right: 2%;
+	}
+	.eaten{
+		position:relative;
+		/*display:inline-block;*/
+		/*width:48vw;*/
+		float:right;
+		margin-left:2%;
+	}
+</style>
+
 <h1>Burgers!</h1>
 
-<h2>Burgers that are ready to eat!</h2>
+<div class="uneaten">
+	<h2>Burgers that are ready to eat!</h2>
 
-<ul>
-	{{#each burgers}}
-		{{#unless devoured}}
-			<li>{{burger_name}}
-				<button class="eat-burger" data-id="{{this.id}}">EAT!</button>
-			</li>
-		{{/unless}}
-	{{/each}}
-</ul>
+	<ul>
+		{{#each burgers}}
+			{{#unless devoured}}
+				<li>{{burger_name}}
+					<button class="eat-burger" data-id="{{this.id}}">EAT!</button>
+				</li>
+			{{/unless}}
+		{{/each}}
+	</ul>
+</div>
+<div class="eaten">
+	<h2>Burgers that have been eaten!</h2>
 
-<h2>Burgers that have been eaten!</h2>
-
-<ul>
-  	{{#each burgers}}
-    	{{#if devoured}}
-      		{{burger_name}}
-    	{{/if}}
-  	{{/each}}
-</ul>
-
+	<ul>
+		{{#each burgers}}
+			{{#if devoured}}
+				<li>{{burger_name}}</li>
+			{{/if}}
+		{{/each}}
+	</ul>
+</div>
 {{!-- ------------------------------------------- --}}
 
 {{!-- <h2>Order a New Burger</h2>
