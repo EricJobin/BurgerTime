@@ -6,15 +6,13 @@ var burger = require("../models/burger.js");
 
 // Create all our routes and set up logic within those routes where required.
 router.get("/", function(req, res) {
-	console.log("Get Burger/")
-
-
+	// console.log("Get Burger/")
 	burger.all(function(data) {
 		var hbsObject = {
 			burgers: data
 		};
-		console.log(hbsObject);
-		console.log(data)
+		// console.log(hbsObject);
+		// console.log(data)
 		res.render("index", hbsObject);
 	});
 });
@@ -30,22 +28,30 @@ router.get("/", function(req, res) {
 // 	});
 // });
 
-// router.put("/api/cats/:id", function(req, res) {
-// 	var condition = "id = " + req.params.id;
+router.put("/api/burger/:id", function(req, res) {
+	var eat = "id = " + req.params.id;
+	console.log("eat burger", eat);
 
-// 	console.log("condition", condition);
+	burger.update(req.params.id, function(result) {
+		if (result.changedRows == 0) {
+			// If no rows were changed, then the ID must not exist, so 404
+			return res.status(404).end();
+		} else {
+			res.status(200).end();
+		}
+	});
 
-// 	cat.update({
-// 		sleepy: req.body.sleepy
-// 	}, condition, function(result) {
-// 		if (result.changedRows == 0) {
-// 		// If no rows were changed, then the ID must not exist, so 404
-// 		return res.status(404).end();
-// 		} else {
-// 		res.status(200).end();
-// 		}
-// 	});
-// });
+	// burger.update({
+	// 	devoured: true
+	// }, eat, function(result) {
+	// 	if (result.changedRows == 0) {
+	// 	// If no rows were changed, then the ID must not exist, so 404
+	// 	return res.status(404).end();
+	// 	} else {
+	// 	res.status(200).end();
+	// 	}
+	// });
+});
 
 
 
