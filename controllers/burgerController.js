@@ -5,29 +5,28 @@ var router = express.Router();
 var burger = require("../models/burger.js");
 
 // Create all our routes and set up logic within those routes where required.
+
+// Loads all burgers in DB - Home Page
 router.get("/", function(req, res) {
-	// console.log("Get Burger/")
 	burger.all(function(data) {
 		var hbsObject = {
 			burgers: data
 		};
-		// console.log(hbsObject);
-		// console.log(data)
 		res.render("index", hbsObject);
 	});
 });
 
+// Creates a new burger on a post request
+router.post("/api/burgers", function(req, res) {
+	var t1=["req", req]
+	console.log(t1)
+	// burger.create(newBurgerName, function(result) {
+	// 	// Send back the ID of the new quote
+	// 	res.json({ id: result.insertId });
+	// });
+});
 
-// router.post("/api/burgers", function(req, res) {
-// 	burger.create(["name", "sleepy"],
-// 	[
-// 		req.body.name, req.body.sleepy
-// 	], function(result) {
-// 		// Send back the ID of the new quote
-// 		res.json({ id: result.insertId });
-// 	});
-// });
-
+// Eats Burger
 router.put("/api/burger/:id", function(req, res) {
 	var eat = "id = " + req.params.id;
 	console.log("eat burger", eat);
@@ -40,20 +39,7 @@ router.put("/api/burger/:id", function(req, res) {
 			res.status(200).end();
 		}
 	});
-
-	// burger.update({
-	// 	devoured: true
-	// }, eat, function(result) {
-	// 	if (result.changedRows == 0) {
-	// 	// If no rows were changed, then the ID must not exist, so 404
-	// 	return res.status(404).end();
-	// 	} else {
-	// 	res.status(200).end();
-	// 	}
-	// });
 });
-
-
 
 // Export routes for server.js to use.
 module.exports = router;

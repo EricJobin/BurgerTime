@@ -1,5 +1,5 @@
 <style>
-	.uneaten{
+	/*.uneaten{
 		position:relative;
 		float:left;
 		margin-right: 2%;
@@ -7,47 +7,56 @@
 	.eaten{
 		position:relative;
 		/*display:inline-block;*/
-		/*width:48vw;*/
+		/*width:48vw;
 		float:right;
 		margin-left:2%;
 	}
+	.newBurgerForm{
+		/*display:inline-block;   trying to get form to display under lists, next try width 100% 
+		width:100%;
+	} */
 </style>
 
 <h1>Burgers!</h1>
 
-<div class="uneaten">
-	<h2>Burgers that are ready to eat!</h2>
+<div>
+	<div class="uneaten">
+		<h2>Burgers that are ready to eat!</h2>
 
-	<ul>
-		{{#each burgers}}
-			{{#unless devoured}}
-				<li>{{burger_name}}
-					<button class="eat-burger" data-id="{{this.id}}">EAT!</button>
-				</li>
-			{{/unless}}
-		{{/each}}
-	</ul>
-</div>
-<div class="eaten">
-	<h2>Burgers that have been eaten!</h2>
+		<ul>
+			{{#each burgers}}
+				{{#unless devoured}}
+					<li>{{burger_name}}
+						<button class="eat-burger" data-id="{{this.id}}">EAT!</button>
+					</li>
+				{{/unless}}
+			{{/each}}
+		</ul>
+	</div>
+	<div class="eaten">
+		<h2>Burgers that have been eaten!</h2>
 
-	<ul>
-		{{#each burgers}}
-			{{#if devoured}}
-				<li>{{burger_name}}</li>
-			{{/if}}
-		{{/each}}
-	</ul>
+		<ul>
+			{{#each burgers}}
+				{{#if devoured}}
+					<li>{{burger_name}}</li>
+				{{/if}}
+			{{/each}}
+		</ul>
+	</div>
 </div>
 {{!-- ------------------------------------------- --}}
 
-{{!-- <h2>Order a New Burger</h2>
-<form class="create-form">
 
-	<div class="form-group">
-		<label for="newBurger">Burger Name:</label>
-		<input type="text" id="newBurger" name="name">
-	</div>
+<div class="newBurgerForm">
+	<h2>Order a New Burger</h2>
+	<form class="create-form">
 
-	<button type="submit">Order Burger</button>
-</form> --}}
+		<div class="form-group">
+			<label for="newBurger">Burger Name:</label>
+			<input type="text" id="newBurger" name="name">
+		</div>
+
+		<button type="submit">Order Burger</button>
+	</form>
+</div>

@@ -17,3 +17,19 @@ li {
 .form-group {
   margin-bottom: 5px;
 }
+
+.uneaten{
+  position:relative;
+  float:left;
+  margin-right: 2%;
+}
+.eaten{
+  position:relative;
+  /*display:inline-block;*/
+  /*width:48vw;*/
+  float:right;
+  margin-left:2%;
+}
+.newBurgerForm{
+  clear:both;
+}
