@@ -11,8 +11,8 @@ var burger = {
 		});
 	},
 
-	create: function(newBurgerName, cb) {
-		orm.create(newBurgerName, function(res) {
+	create: function(newBurgerNameModel, cb) {
+		orm.create(newBurgerNameModel, function(res) {
 			cb(res);
 		});
 	},

@@ -12,19 +12,14 @@ var orm = {
 		});
 	},
 
-	//This function will add a new burger into the DB *** UNDER CONSTRUCTION ***
-	create: function(newBurgerName, cb) {
-		//?? burgers, ?? devoured = ? true ?? id = ? id
-		//burger_name varchar(255) NOT NULL
-		var queryString = `INSERT INTO burgers (burger_name) VALUES ?`
-
-		console.log(queryString);
-
-		connection.query(queryString, newBurgerName, function(err, result) {
-		if (err) {
-			throw err;
-		}
-		cb(result);
+	//This function will add a new burger into the DB
+	create: function(newBurgerNameORM, cb) {
+		var queryString = `INSERT INTO burgers (burger_name) VALUES (?)`
+		connection.query(queryString, [newBurgerNameORM], function(err, result) {
+			if (err) {
+				throw err;
+			}
+			cb(result);
 		});
 	},
 

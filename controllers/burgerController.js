@@ -17,13 +17,12 @@ router.get("/", function(req, res) {
 });
 
 // Creates a new burger on a post request
-router.post("/api/burgers", function(req, res) {
-	var t1=["req", req]
-	console.log(t1)
-	// burger.create(newBurgerName, function(result) {
-	// 	// Send back the ID of the new quote
-	// 	res.json({ id: result.insertId });
-	// });
+router.post("/api/burger", function(req, res) {
+	var newBurgerNameCont = req.body.name;
+	burger.create(newBurgerNameCont, function(result) {
+		// Send back the ID of the new quote
+		res.json({ id: result.insertId });
+	});
 });
 
 // Eats Burger
